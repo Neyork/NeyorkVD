@@ -39,8 +39,7 @@ from config import (
 async def start_set(_, query: CallbackQuery):
     await query.answer("home start")
     await query.edit_message_text(
-        f"""""",
-        
+        f""""""
 
 @Client.on_callback_query(filters.regex("quick_use"))
 @check_blacklist()

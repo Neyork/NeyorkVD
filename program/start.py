@@ -84,7 +84,7 @@ async def start_(c: Client, message: Message):
     user_id = message.from_user.id
     await add_served_user(user_id)
     await message.reply_text(
-        f"""""",
+        f""""""
         
 
 @Client.on_message(
