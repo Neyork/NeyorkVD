@@ -39,7 +39,31 @@ from config import (
 async def start_set(_, query: CallbackQuery):
     await query.answer("home start")
     await query.edit_message_text(
-        f""""""
+        f"""*Hello Sir {} !*
+âœª My name is Neyork I'm here to help you manage your groups! Hit /help to get Manage and Music, Vedio Commands and to find out more about how to use me to my full potential.
+Ã— *Uptime:* {}
+Ã— {} *users, across* {} *chats.*
+âœª
+""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(" Add me to a Chat! ", url=f"https://t.me/{me_bot.username}?startgroup=true")
+                ],[
+                    InlineKeyboardButton("Guide", callback_data="user_guide")
+                ],[
+                    InlineKeyboardButton(" Commands", callback_data="command_list"),
+                    InlineKeyboardButton("Help", url=f"help_back")
+                ],[
+                    InlineKeyboardButton("Support", url=f"https://t.me/{GROUP_SUPPORT}"),
+                    InlineKeyboardButton("Update", url=f"https://t.me/{UPDATES_CHANNEL}")
+                ],[
+                    InlineKeyboardButton("Neyork", url="https://t.me/Dlhab")
+                ],
+            ]
+        ),
+        disable_web_page_preview=True,
+    )
 
 @Client.on_callback_query(filters.regex("quick_use"))
 @check_blacklist()

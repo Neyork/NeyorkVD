@@ -84,11 +84,34 @@ async def start_(c: Client, message: Message):
     user_id = message.from_user.id
     await add_served_user(user_id)
     await message.reply_text(
-        f""""""
-        
+        f"""*Hello Sir {} !*
+âœª My name is Neyork I'm here to help you manage your groups! Hit /help to get Manage and Music, Vedio Commands and to find out more about how to use me to my full potential.
+Ã— *Uptime:* {}
+Ã— {} *users, across* {} *chats.*
+âœª
+""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(" Add me to a Chat! ", url=f"https://t.me/{me_bot.username}?startgroup=true")
+                ],[
+                    InlineKeyboardButton("Guide", callback_data="user_guide")
+                ],[
+                    InlineKeyboardButton(" Commands", callback_data="command_list"),
+                    InlineKeyboardButton("Help", url=f"help_back")
+                ],[
+                    InlineKeyboardButton("Support", url=f"https://t.me/{GROUP_SUPPORT}"),
+                    InlineKeyboardButton("Update", url=f"https://t.me/{UPDATES_CHANNEL}")
+                ],[
+                    InlineKeyboardButton("Neyork", url="https://t.me/Dlhab")
+                ],
+            ]
+        ),
+        disable_web_page_preview=True,
+    )
 
 @Client.on_message(
-    command(["aalive", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
+    command(["iaalive", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
 )
 @check_blacklist()
 async def alive(c: Client, message: Message):
