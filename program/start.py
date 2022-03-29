@@ -1,6 +1,6 @@
 """
 Video + Music Stream Telegram Bot
-Copyright (c) 2022-present Copyright (c) 2022-present Neyork <https://github.com/Neyork>
+Copyright (c) 2022-present levina=lab <https://github.com/levina-lab>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -84,34 +84,36 @@ async def start_(c: Client, message: Message):
     user_id = message.from_user.id
     await add_served_user(user_id)
     await message.reply_text(
-        f"""*Hello Sir {} !*
-âœª My name is Neyork I'm here to help you manage your groups! Hit /help to get Manage and Music, Vedio Commands and to find out more about how to use me to my full potential.
-Ã— *Uptime:* {}
-Ã— {} *users, across* {} *chats.*
-âœª
+        f"""Hi {message.from_user.mention()} 👋🏻\n
+💭 [{me_bot.first_name}](https://t.me/{me_bot.username}) is a bot to play music and video in groups, through the new Telegram video chats.
+
+🕵🏻 Check out all the **Bot's commands** and how they work by clicking on the » 📚 **Commands** button!
+
+🧑🏻‍💻 To know how to use this bot, please click on the » ❓ **Basic Guide** button!
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(" Add me to a Chat! ", url=f"https://t.me/{me_bot.username}?startgroup=true")
+                    InlineKeyboardButton("➕ Add me to a Group ➕", url=f"https://t.me/{me_bot.username}?startgroup=true")
                 ],[
-                    InlineKeyboardButton("Guide", callback_data="user_guide")
+                    InlineKeyboardButton("❓ Basic Guide", callback_data="user_guide")
                 ],[
-                    InlineKeyboardButton(" Commands", callback_data="command_list"),
-                    InlineKeyboardButton("Help", url=f"help_back")
+                    InlineKeyboardButton("📚 Commands", callback_data="command_list"),
+                    InlineKeyboardButton("❤️ Donate", url=f"https://t.me/{OWNER_USERNAME}")
                 ],[
-                    InlineKeyboardButton("Support", url=f"https://t.me/{GROUP_SUPPORT}"),
-                    InlineKeyboardButton("Update", url=f"https://t.me/{UPDATES_CHANNEL}")
+                    InlineKeyboardButton("👥 Support Group", url=f"https://t.me/{GROUP_SUPPORT}"),
+                    InlineKeyboardButton("📣 Support Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],[
-                    InlineKeyboardButton("Neyork", url="https://t.me/Dlhab")
+                    InlineKeyboardButton("🌐 Source Code", url="https://github.com/levina-lab/video-stream")
                 ],
             ]
         ),
         disable_web_page_preview=True,
     )
 
+
 @Client.on_message(
-    command(["iaalive", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
+    command(["alive", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
 )
 @check_blacklist()
 async def alive(c: Client, message: Message):
